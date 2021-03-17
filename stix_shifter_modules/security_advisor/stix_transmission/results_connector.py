@@ -9,7 +9,7 @@ class ResultsConnector(BaseResultsConnector):
         self.auth = auth
         api_key = auth.get("apiKey")
         self.auth_token = Auth(api_key)
-        self.host = "{0}/v1".format(self.auth_token.validate_location(self.auth["accountID"], host))
+        self.host = self.auth_token.find_location(self.auth["accountID"], host)
         self.StixPatternProcessor = StixPatternProcessor()
 
     def create_results_connection(self, searchID , offset , length):
