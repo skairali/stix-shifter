@@ -40,7 +40,7 @@ class Auth():
                 resp = requests.get("{0}/accounts/{1}/settings".format(adminApiUrl, accountID), headers=headers)
                 current_location_id = resp.json()["location"]["id"]
                 resp = requests.get("{0}/locations/{1}".format(adminApiUrl, current_location_id), headers=headers)
-                return "{0}/v1".format(resp.json()["si_findings_endpoint_url"])
+                return "{0}/si/findings/v1".format(resp.json()["main_endpoint_url"])
             else:
                 return host
         except Exception as e:
